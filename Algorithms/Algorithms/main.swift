@@ -17,5 +17,10 @@ print("Kadane max sum1: \(SolutionDefault().maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
 print("Kadane max sum2: \(SolutionDefault().maxSubArray([1]))")
 print("Kadane max sum3: \(SolutionDefault().maxSubArray([5,4,-1,7,8]))")
 
-
+print("Result range1: \(InsertRangeSolution().insert([[1,3],[6,9]], [2,5]))")
+print("Result range2: \(InsertRangeSolution().insert([[1,2],[3,5],[6,7],[8,10],[14,16]], [11,13]))")
+print("Result range3: \(InsertRangeSolution().insert([[3,5],[6,7],[8,10],[14,16]], [1,2]))")
+print("Result range4: \(InsertRangeSolution().insert([[3,5],[6,7],[8,10],[14,16]], [1,2]))")
+print("Result range5: \(InsertRangeSolution().insert([[3,5],[6,7],[8,10],[14,16]], [19,20]))")
+print("Result range6: \(InsertRangeSolution().insert([[1,3],[4,5],[10,12]], [7,8]))")
 
