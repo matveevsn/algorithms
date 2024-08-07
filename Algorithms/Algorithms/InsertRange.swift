@@ -88,3 +88,25 @@ class InsertRangeSolution {
         return newIntervalsStart
     }
 }
+
+class InsertRangeSolutionDefault {
+    func insert(_ intervals: [[Int]], _ newInterval: [Int]) -> [[Int]] {
+        var result = [[Int]]()
+        var new = newInterval
+
+        for interval in intervals {
+            if new[0] > interval[1] {
+                result.append(interval)
+            } else if new[1] < interval[0] {
+                result.append(interval)
+            } else {
+                new[0] = min(new[0], interval[0])
+                new[1] = max(new[1], interval[1])
+            }
+        }
+
+        result.append(new)
+        result.sort(by: { $0[0] < $1[0] })
+        return result
+    }
+}
