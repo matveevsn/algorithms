@@ -31,4 +31,8 @@ print("Result range4: \(InsertRangeSolutionDefault().insert([[3,5],[6,7],[8,10],
 print("Result range5: \(InsertRangeSolutionDefault().insert([[3,5],[6,7],[8,10],[14,16]], [19,20]))")
 print("Result range6: \(InsertRangeSolutionDefault().insert([[1,3],[4,5],[10,12]], [7,8]))")
 
+print("Result merge range1: \(MergeRangeSolution().merge([[1,3],[2,6],[8,10],[15,18]]))")
+print("Result merge range2: \(MergeRangeSolution().merge([[1,4],[4,5]]))")
+
+
 
