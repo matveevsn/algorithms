@@ -34,5 +34,7 @@ print("Result range6: \(InsertRangeSolutionDefault().insert([[1,3],[4,5],[10,12]
 print("Result merge range1: \(MergeRangeSolution().merge([[1,3],[2,6],[8,10],[15,18]]))")
 print("Result merge range2: \(MergeRangeSolution().merge([[1,4],[4,5]]))")
 
+print("Result closest points1: \(kClosestPointsSolution().kClosest([[1,3],[-2,2]], 1))")
+print("Result closest points2: \(kClosestPointsSolution().kClosest([[3,3],[5,-1],[-2,4]], 2))")
 
 
