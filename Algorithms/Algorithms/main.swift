@@ -37,8 +37,8 @@ print("Result merge range2: \(MergeRangeSolution().merge([[1,4],[4,5]]))")
 print("Result closest points1: \(kClosestPointsSolution().kClosest([[1,3],[-2,2]], 1))")
 print("Result closest points2: \(kClosestPointsSolution().kClosest([[3,3],[5,-1],[-2,4]], 2))")
 
-print("Result max k Points: \(MinHeapClosestPointsSolution().kClosest([10, 4, 6, 78, 22, 33, 50], 5))")
-
+print("Result minHeap closest points1: \(MinHeapClosestPointsSolution().kClosest([[1,3],[-2,2]], 1))")
+print("Result minHeap closest points2: \(MinHeapClosestPointsSolution().kClosest([[3,3],[5,-1],[-2,4]], 2))")
 
 
 

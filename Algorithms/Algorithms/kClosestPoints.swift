@@ -43,23 +43,35 @@ class kClosestPointsSolution {
     }
 }
 
-class MinHeap {
-    var data = [Int]()
+protocol HeapValue {
+    var value: Int { get }
+}
+
+extension Array: HeapValue where Element == Int {
+    var value: Int {
+        get {
+            return Int(sqrt( pow(Double(self[0]), 2) + pow(Double(self[1]), 2) ))
+        }
+    }
+}
+
+class MinHeap<T: HeapValue> {
+    var data = [T]()
 
     var count: Int {
         return data.count
     }
 
-    init(data: [Int] = [Int]()) {
+    init(data: [T] = [T]()) {
         self.data = data
     }
 
-    func insertElement(element: Int) {
+    func insertElement(element: T) {
         data.append(element)
         var index = data.count - 1
         while index > 0 {
             let parentIndex: Int = (index - 1) / 2
-            if data[parentIndex] > data[index] {
+            if data[parentIndex].value > data[index].value {
                 let parentData = data[parentIndex]
                 data[parentIndex] = data[index]
                 data[index] = parentData
@@ -89,10 +101,10 @@ class MinHeap {
             let rightChild = 2*index + 2
             var smallestIndex = index
 
-            if leftChild < data.count && data[leftChild] < data[index] {
+            if leftChild < data.count && data[leftChild].value < data[index].value {
                 smallestIndex = leftChild
             }
-            if rightChild < data.count && data[rightChild] < data[smallestIndex] {
+            if rightChild < data.count && data[rightChild].value < data[smallestIndex].value {
                 smallestIndex = rightChild
             }
 
@@ -110,12 +122,8 @@ class MinHeap {
 
 
 class MinHeapClosestPointsSolution {
-//    func kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {
-//        return [[Int]()]
-//    }
-
-    func kClosest(_ points: [Int], _ k: Int) -> [Int] {
-        let minHeap = MinHeap()
+    func kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {
+        let minHeap = MinHeap<[Int]>()
         for point in points {
             minHeap.insertElement(element: point)
             if minHeap.count > k {
