@@ -42,3 +42,86 @@ class kClosestPointsSolution {
         return Array(sortedPoints[..<k])
     }
 }
+
+class MinHeap {
+    var data = [Int]()
+
+    var count: Int {
+        return data.count
+    }
+
+    init(data: [Int] = [Int]()) {
+        self.data = data
+    }
+
+    func insertElement(element: Int) {
+        data.append(element)
+        var index = data.count - 1
+        while index > 0 {
+            let parentIndex: Int = (index - 1) / 2
+            if data[parentIndex] > data[index] {
+                let parentData = data[parentIndex]
+                data[parentIndex] = data[index]
+                data[index] = parentData
+            } else {
+                break
+            }
+            index = parentIndex
+        }
+    }
+
+    func deleteTop() {
+        guard let lastElement = data.last else { return }
+        data[0] = lastElement
+        data.removeLast()
+        heapify(heapifyFromindex: 0)
+    }
+
+    func printHeap() {
+        print("Data \(data)")
+    }
+
+    private func heapify(heapifyFromindex: Int) {
+
+        var index = heapifyFromindex
+        while index <= data.count {
+            let leftChild = 2*index + 1
+            let rightChild = 2*index + 2
+            var smallestIndex = index
+
+            if leftChild < data.count && data[leftChild] < data[index] {
+                smallestIndex = leftChild
+            }
+            if rightChild < data.count && data[rightChild] < data[smallestIndex] {
+                smallestIndex = rightChild
+            }
+
+            if index != smallestIndex {
+                let indexData = data[index]
+                data[index] = data[smallestIndex]
+                data[smallestIndex] = indexData
+            } else {
+                break
+            }
+            index = smallestIndex
+        }
+    }
+}
+
+
+class MinHeapClosestPointsSolution {
+//    func kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {
+//        return [[Int]()]
+//    }
+
+    func kClosest(_ points: [Int], _ k: Int) -> [Int] {
+        let minHeap = MinHeap()
+        for point in points {
+            minHeap.insertElement(element: point)
+            if minHeap.count > k {
+                minHeap.deleteTop()
+            }
+        }
+        return minHeap.data
+    }
+}
