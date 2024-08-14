@@ -40,5 +40,7 @@ print("Result closest points2: \(kClosestPointsSolution().kClosest([[3,3],[5,-1]
 print("Result maxHeap closest points1: \(MaxHeapClosestPointsSolution().kClosest([[1,3],[-2,2]], 1))")
 print("Result maxHeap closest points2: \(MaxHeapClosestPointsSolution().kClosest([[3,3],[5,-1],[-2,4]], 2))")
 
+QuickSort().sort(data: [16, 13, 9, 3, 4, 20, 22, 40, 50])
+
 
 

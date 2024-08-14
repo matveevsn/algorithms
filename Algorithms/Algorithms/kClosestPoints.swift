@@ -133,3 +133,41 @@ class MaxHeapClosestPointsSolution {
         return maxHeap.data
     }
 }
+
+class QuickSort {
+    func sort(data: [Int]) {
+        var dataToSort = data
+        quickSort(data: &dataToSort)
+    }
+
+    private func quickSort(data: inout [Int]) {
+        var i = 0
+        var j = data.count - 1
+        let pivot = data[data.count/2]
+        print("QuickSort pivot element: \(pivot)")
+
+        repeat {
+            while data[i] < pivot {
+                i += 1
+            }
+            while data[j] > pivot {
+                j -= 1
+            }
+            if i <= j {
+                let buf = data[i]
+                data[i] = data[j]
+                data[j] = buf
+                i += 1
+                j -= 1
+            }
+        } while (i <= j)
+
+//        if j > 0 {
+//            quickSort(data: &data)
+//        }
+
+        print("QuickSort data result: \(data)")
+        print("QuickSort left array len: \(j + 1)")
+        print("QuickSort right array start: \(i)")
+    }
+}
