@@ -55,7 +55,7 @@ extension Array: HeapValue where Element == Int {
     }
 }
 
-class MinHeap<T: HeapValue> {
+class MaxHeap<T: HeapValue> {
     var data = [T]()
 
     var count: Int {
@@ -71,7 +71,7 @@ class MinHeap<T: HeapValue> {
         var index = data.count - 1
         while index > 0 {
             let parentIndex: Int = (index - 1) / 2
-            if data[parentIndex].value > data[index].value {
+            if data[parentIndex].value < data[index].value {
                 let parentData = data[parentIndex]
                 data[parentIndex] = data[index]
                 data[index] = parentData
@@ -101,10 +101,10 @@ class MinHeap<T: HeapValue> {
             let rightChild = 2*index + 2
             var smallestIndex = index
 
-            if leftChild < data.count && data[leftChild].value < data[index].value {
+            if leftChild < data.count && data[leftChild].value > data[index].value {
                 smallestIndex = leftChild
             }
-            if rightChild < data.count && data[rightChild].value < data[smallestIndex].value {
+            if rightChild < data.count && data[rightChild].value > data[smallestIndex].value {
                 smallestIndex = rightChild
             }
 
@@ -121,15 +121,15 @@ class MinHeap<T: HeapValue> {
 }
 
 
-class MinHeapClosestPointsSolution {
+class MaxHeapClosestPointsSolution {
     func kClosest(_ points: [[Int]], _ k: Int) -> [[Int]] {
-        let minHeap = MinHeap<[Int]>()
+        let maxHeap = MaxHeap<[Int]>()
         for point in points {
-            minHeap.insertElement(element: point)
-            if minHeap.count > k {
-                minHeap.deleteTop()
+            maxHeap.insertElement(element: point)
+            if maxHeap.count > k {
+                maxHeap.deleteTop()
             }
         }
-        return minHeap.data
+        return maxHeap.data
     }
 }
