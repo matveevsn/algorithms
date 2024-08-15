@@ -43,11 +43,11 @@ class kClosestPointsSolution {
     }
 }
 
-protocol HeapValue {
+protocol DistanceValue {
     var value: Int { get }
 }
 
-extension Array: HeapValue where Element == Int {
+extension Array: DistanceValue where Element == Int {
     var value: Int {
         get {
             return Int(sqrt( pow(Double(self[0]), 2) + pow(Double(self[1]), 2) ))
@@ -55,7 +55,15 @@ extension Array: HeapValue where Element == Int {
     }
 }
 
-class MaxHeap<T: HeapValue> {
+extension Int: DistanceValue {
+    var value: Int {
+        get {
+            return self
+        }
+    }
+}
+
+class MaxHeap<T: DistanceValue> {
     var data = [T]()
 
     var count: Int {
@@ -131,6 +139,73 @@ class MaxHeapClosestPointsSolution {
             }
         }
         return maxHeap.data
+    }
+}
+
+class QuickSortLamuto {
+    func sort(data: [Int]) {
+        var dataToSort = data
+        quickSort(data: &dataToSort, low: 0, high: dataToSort.count - 1, k: 0)
+        print("QuickSortLamuto result: \(dataToSort)")
+    }
+    
+    private func quickSort(data: inout [Int], low: Int, high: Int, k: Int) {
+        if low < high {
+            let pivot = data[high]
+            
+            var i = low - 1
+            for j in low...high {
+                if data[j] < pivot {
+                    i += 1
+                    let buf = data[j]
+                    data[j] = data[i]
+                    data[i] = buf
+                }
+            }
+
+            let buf = data[high]
+            data[high] = data[i + 1]
+            data[i + 1] = buf
+            
+            quickSort(data: &data, low: 0, high: i, k: k)
+            quickSort(data: &data, low: i + 2, high: high, k: k)
+        }
+    }
+}
+
+class QuickSortLamutoSmallest<T: DistanceValue> {
+    func sort(data: [T], k: Int) -> [T] {
+        var dataToSort: [T] = data
+        quickSort(data: &dataToSort, low: 0, high: dataToSort.count - 1, k: k)
+        return Array(dataToSort[0..<k])
+    }
+    
+    private func quickSort(data: inout [T], low: Int, high: Int, k: Int) {
+            let pivot = data[high].value
+            
+            var i = low - 1
+            for j in low...high {
+                if data[j].value < pivot {
+                    i += 1
+                    let buf = data[j]
+                    data[j] = data[i]
+                    data[i] = buf
+                }
+            }
+
+            let buf = data[high]
+            data[high] = data[i + 1]
+            data[i + 1] = buf
+        
+            if i + 1 == k {
+                return
+            }
+        
+            if i + 1 < k {
+                quickSort(data: &data, low: i + 2, high: high, k: k - (i + 1) + low)
+            } else if i + 1 > k {
+                quickSort(data: &data, low: 0, high: i, k: k)
+            }
     }
 }
 
