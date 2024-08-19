@@ -42,3 +42,18 @@ print("Result maxHeap closest points2: \(MaxHeapClosestPointsSolution().kClosest
 
 print("QuickSortLamutoSmallest \(QuickSortLamutoSmallest().sort(data: [[1,3],[-2,2]], k: 1))")
 print("QuickSortLamutoSmallest \(QuickSortLamutoSmallest().sort(data:  [[3,3],[5,-1],[-2,4]], k: 2))")
+
+print("Word break solution \(WordBreakSolution().wordBreak("leetcode", ["leet","code"]))")
+print("Word break solution \(WordBreakSolution().wordBreak("applepenapple", ["apple","pen"]))")
+print("Word break solution \(WordBreakSolution().wordBreak("catsandog", ["cats","dog","sand","and","cat"]))")
+
+print("Word break recursive solution \(WordBreakRecursiveSolution().wordBreak("leetcode", ["leet","code"]))")
+print("Word break recursive solution \(WordBreakRecursiveSolution().wordBreak("applepenapple", ["apple","pen"]))")
+print("Word break recursive solution \(WordBreakRecursiveSolution().wordBreak("catsandog", ["cats","dog","sand","and","cat"]))")
+
+print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("leetcode", ["leet","code"]))")
+print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("applepenapple", ["apple","pen"]))")
+print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("catsandog", ["cats","dog","sand","and","cat"]))")
+
+
+
