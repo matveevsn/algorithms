@@ -99,5 +99,4 @@ class WordBreakDynamicSolution {
 
         return dp[s.count]
     }
-
 }

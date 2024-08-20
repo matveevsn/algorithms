@@ -55,5 +55,9 @@ print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("lee
 print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("applepenapple", ["apple","pen"]))")
 print("Word break recursive solution \(WordBreakDynamicSolution().wordBreak("catsandog", ["cats","dog","sand","and","cat"]))")
 
+print("Longest substring without repeating \(LongestSubstringWithoutRepeatingSolution().lengthOfLongestSubstring("abcabcbb"))")
+print("Longest substring without repeating \(LongestSubstringWithoutRepeatingSolution().lengthOfLongestSubstring("bbbbb"))")
+print("Longest substring without repeating \(LongestSubstringWithoutRepeatingSolution().lengthOfLongestSubstring("pwwkew"))")
+
 
 
